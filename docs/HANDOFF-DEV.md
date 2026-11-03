@@ -27,7 +27,7 @@ SaaS за онлайн магазини по Алтернативния режи
 npm install
 npm run dev        # http://localhost:3000
 npm test           # node --experimental-strip-types --test (22 теста)
-npx tsc --noEmit && npx eslint src
+npm test && npx eslint src
 ```
 Нужни променливи: виж раздел 5.
 
@@ -65,12 +65,14 @@ npx tsc --noEmit && npx eslint src
 7. **Бележката не съдържа още:** номер на финансовата транзакция, данъчна група и QR код (чл. 52о, ал. 1, т. 4, 5, 6 на Н-18). Спецификацията на QR не е намерена.
 8. **PDF логото:** само PNG и JPEG; WebP се пропуска.
 9. Двата работни процеса в n8n Cloud (старият) трябва да се спрат; Vercel и VPS работят паралелно, а `smwebsites.org` още сочи към Vercel.
-10. Одиторският XML (`src/lib/auditXml.ts`) следва публична имплементация и **не е валидиран от НАП**.
+10. Одиторският XML (`src/lib/auditXml.js`) следва публична имплементация и **не е валидиран от НАП**.
 11. Stripe е написан, но не е тестван с реални ключове.
 12. Тестовите данни в Supabase (магазини „Кетен“, „Superman“, „Тестов магазин“) трябва да се изчистят.
 
 ## 8. Карта на кода
 - `src/app/(site)/**` публичен сайт; `src/app/app/page.tsx` табло; `src/components/dash/**` разделите на таблото.
 - `src/lib/integrations/**` разчитане на WooCommerce, Shopify и универсален JSON; `test/**` тестове.
-- `src/lib/receiptPdf.ts` PDF; `src/lib/pack.ts` ZIP справка за счетоводителя; `src/lib/auditXml.ts` XML; `src/lib/declaration.ts` декларация при регистрация; `src/lib/plans.ts` планове.
+- `src/lib/receiptPdf.js` PDF; `src/lib/pack.js` ZIP справка за счетоводителя; `src/lib/auditXml.js` XML; `src/lib/declaration.js` декларация при регистрация; `src/lib/plans.js` планове.
 - `ops/**` скриптове за сървъра и n8n.
+
+> Кодът е на JavaScript (JSX). Предишната версия на TypeScript е запазена в клона `typescript-archive` и етикета `typescript-final`.
